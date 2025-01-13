@@ -22,18 +22,18 @@ class SRDataset(Dataset):
         hr_img = Image.open(os.path.join(self.hr_images_path, self.hr_images[idx])).convert('RGB')
         lr_img = Image.open(os.path.join(self.lr_images_path, self.lr_images[idx])).convert('RGB')
 
-        # 랜덤 크롭 위치 선택
+        # 이미지 중심 좌표
         hr_width = hr_img.size[0]
         hr_height = hr_img.size[1]
 
-        # 랜덤한 위치에서 패치 크롭
-        x = random.randint(0, hr_width - self.patch_size)
-        y = random.randint(0, hr_height - self.patch_size)
+        # 중앙 크롭을 위한 좌표 계산
+        x = (hr_width - self.patch_size) // 2
+        y = (hr_height - self.patch_size) // 2
 
-        # HR 이미지 크롭
+        # HR 이미지 센터 크롭
         hr_patch = hr_img.crop((x, y, x + self.patch_size, y + self.patch_size))
 
-        # LR 이미지는 scale factor를 고려하여 크롭
+        # LR 이미지 센터 크롭 (scale factor 고려)
         lr_patch = lr_img.crop((x//self.scale, y//self.scale,
                               (x + self.patch_size)//self.scale,
                               (y + self.patch_size)//self.scale))
