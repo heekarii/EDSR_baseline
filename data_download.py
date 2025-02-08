@@ -1,4 +1,5 @@
 import wget
+import requests
 import zipfile
 import shutil
 from pathlib import Path

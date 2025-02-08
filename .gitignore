@@ -1,5 +1,5 @@
 dataset/
-checkpoint*.pth
+*.pth
 *.pyc
 *.png
-test.py
+*.JPEG

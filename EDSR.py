@@ -16,7 +16,7 @@ class ResBlock(nn.Module):
         return out
 
 class EDSR(nn.Module):
-    def __init__(self, n_resblocks=16, n_feats=64, scale=4):
+    def __init__(self, n_resblocks=32, n_feats=256, scale=4):
         super(EDSR, self).__init__()
 
         # 초기 특징 추출
@@ -29,9 +29,16 @@ class EDSR(nn.Module):
         )
 
         # Upscaling
+        # self.upscale = nn.Sequential(
+        #     nn.Conv2d(n_feats, n_feats * (scale ** 2), kernel_size=3, padding=1),
+        #     nn.PixelShuffle(scale),
+        #     nn.Conv2d(n_feats, 3, kernel_size=3, padding=1)
+        # )
         self.upscale = nn.Sequential(
-            nn.Conv2d(n_feats, n_feats * (scale ** 2), kernel_size=3, padding=1),
-            nn.PixelShuffle(scale),
+            nn.Conv2d(n_feats, n_feats * 4, kernel_size=3, padding=1),
+            nn.PixelShuffle(2),  # x2 업스케일
+            nn.Conv2d(n_feats, n_feats * 4, kernel_size=3, padding=1),
+            nn.PixelShuffle(2),  # x2 업스케일
             nn.Conv2d(n_feats, 3, kernel_size=3, padding=1)
         )
 

@@ -7,7 +7,7 @@ from psnr import calculate_psnr
 import datetime
 from pytorch_msssim import ssim
 
-div2k_path = "/home/choi/SR_challenge/dataset"
+div2k_path = "/EDSR_baseline/dataset"
 
 batch_size = 16
 learning_rate = 1e-4
