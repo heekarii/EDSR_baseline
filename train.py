@@ -72,7 +72,8 @@ for epoch in range(num_epochs):
           f'PSNR: {avg_psnr:.2f}, SSIM: {avg_ssim:.4f}, Time: {end-start}')
     
     # 체크포인트 저장
-    if (epoch + 1) % 10 == 0:
+    # if (epoch + 1) % 10 == 0:
+    if (epoch + 1) == num_epochs:
         torch.save({
             'epoch': epoch,
             'model_state_dict': model.state_dict(),
