@@ -7,8 +7,14 @@ from data_loader import SingleImageDataset
 from psnr import calculate_psnr
 import datetime
 from pytorch_msssim import ssim
+from dotenv import load_dotenv
+import os
 
-div2k_path = "/EDSR_baseline/dataset"
+load_dotenv()
+
+div2k_path = os.environ.get('DIV2K_path')
+
+print(div2k_path)
 # div2k_path = "/home/iml001/Desktop/projects/EDSR_baseline/dataset"
 
 batch_size = 32

@@ -3,3 +3,4 @@ dataset/
 *.pyc
 *.png
 *.JPEG
+.env
