@@ -11,8 +11,8 @@ class SingelImageDataset(Dataset):
 
         # self.hr_images = sorted([img for img in os.listdir(self.hr_images_path) if img.endswith('.png')])
         # self.lr_images = sorted([img for img in os.listdir(self.lr_images_path) if img.endswith('.png')])
-        self.hr_image = ['0002.png']
-        self.lr_image = ['0002x4.png']
+        self.hr_images = ['0002.png']
+        self.lr_images = ['0002x4.png']
         assert len(self.hr_images) == len(self.lr_images)
        
         self.patch_size = patch_size
@@ -25,8 +25,8 @@ class SingelImageDataset(Dataset):
         # hr_img = Image.open(os.path.join(self.hr_images_path, self.hr_images[idx])).convert('RGB')
         # lr_img = Image.open(os.path.join(self.lr_images_path, self.lr_images[idx])).convert('RGB')
 
-        hr_filename = self.hr_image[idx]
-        lr_filename = self.lr_image[idx]
+        hr_filename = self.hr_images[idx]
+        lr_filename = self.lr_images[idx]
 
         hr_path = os.path.join(self.hr_images_path, hr_filename)
         lr_path = os.path.join(self.lr_images_path, lr_filename)
