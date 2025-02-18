@@ -4,7 +4,7 @@ import os
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
 
-class SingelImageDataset(Dataset):
+class SingleImageDataset(Dataset):
     def __init__(self, div2k_path, patch_size=48):
         self.hr_images_path = os.path.join(div2k_path, 'DIV2K_train_HR')
         self.lr_images_path = os.path.join(div2k_path, 'DIV2K_train_LR_bicubic/X4')

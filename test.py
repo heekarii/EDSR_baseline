@@ -70,8 +70,6 @@ if __name__ == "__main__":
         output_image = model(input_image)
 
     end = datetime.datetime.now()
-    # 해상도 맞추기 (PSNR 및 SSIM 계산을 위해)
-    # output_image = match_size(output_image, input_image)
     
     # PSNR 및 SSIM 계산
     hr_image = preprocess_image(args.hr).to(device)
