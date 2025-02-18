@@ -4,7 +4,7 @@ import os
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
 
-class SingelImageDataset(Dataset):
+class SingleImageDataset(Dataset):
     def __init__(self, div2k_path, patch_size=48):
         self.hr_images_path = os.path.join(div2k_path, 'DIV2K_train_HR')
         self.lr_images_path = os.path.join(div2k_path, 'DIV2K_train_LR_bicubic/X4')
@@ -39,12 +39,16 @@ class SingelImageDataset(Dataset):
         hr_height = hr_img.size[1]
 
         # 중앙 크롭을 위한 좌표 계산
-        x = (hr_width - self.patch_size) // 2
-        y = (hr_height - self.patch_size) // 2
+        # x = (hr_width - self.patch_size) // 2
+        # y = (hr_height - self.patch_size) // 2
+        x = random.randint(0, hr_width - self.patch_size)
+        y = random.randint(0, hr_height - self.patch_size)
 
         # HR 이미지 센터 크롭
+        # hr_patch = hr_img.crop((x, y, x + self.patch_size, y + self.patch_size))
+        # HR image random crop
         hr_patch = hr_img.crop((x, y, x + self.patch_size, y + self.patch_size))
-
+    
         # LR 이미지 센터 크롭 (scale factor 고려)
         lr_patch = lr_img.crop((x//self.scale, y//self.scale,
                               (x + self.patch_size)//self.scale,

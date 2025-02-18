@@ -1,4 +1,4 @@
 import torch as t
 
-checkpoint = t.load('model.pth')
-print(checkpoint['model_state_dict'])
+checkpoint = t.load('D:\EDSR_baseline\model_bn.pth')
+print(checkpoint.keys())
