@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 from EDSR import EDSR
 from loader import SRDataset
+from data_loader import SingelImageDataset
 from psnr import calculate_psnr
 import datetime
 from pytorch_msssim import ssim
@@ -14,7 +15,8 @@ learning_rate = 1e-4
 num_epochs = 300
 
 # 데이터로더 설정
-train_dataset = SRDataset(div2k_path)
+# train_dataset = SRDataset(div2k_path)
+train_dataset = SingelImageDataset(div2k_path)
 train_loader = DataLoader(train_dataset,
                          batch_size=batch_size,
                          shuffle=True)
