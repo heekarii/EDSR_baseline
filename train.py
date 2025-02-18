@@ -8,15 +8,15 @@ from psnr import calculate_psnr
 import datetime
 from pytorch_msssim import ssim
 
-# div2k_path = "/EDSR_baseline/dataset"
-div2k_path = "/home/iml001/Desktop/projects/EDSR_baseline/dataset"
+div2k_path = "/EDSR_baseline/dataset"
+# div2k_path = "/home/iml001/Desktop/projects/EDSR_baseline/dataset"
 
-batch_size = 16
+batch_size = 32
 learning_rate = 1e-4
 num_epochs = 300
 
 # 데이터로더 설정
-#train_dataset = SRDataset(div2k_path)
+# train_dataset = SRDataset(div2k_path)
 train_dataset = SingleImageDataset(div2k_path)
 train_loader = DataLoader(train_dataset,
                          batch_size=batch_size,
