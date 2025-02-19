@@ -17,7 +17,7 @@ num_epochs = 300
 train_dataset = SRDataset(div2k_path)
 train_loader = DataLoader(train_dataset,
                          batch_size=batch_size,
-                         shuffle=True)
+                         shuffle=True, num_workers=4)
 
 # 모델, 손실함수, 옵티마이저 설정
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
